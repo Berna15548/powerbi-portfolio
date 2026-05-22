@@ -3,7 +3,6 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "../App.scss";
 import { Card, Text, Title } from "@mantine/core";
-import { CgHomeScreen, CgScreen } from "react-icons/cg";
 import { useEffect, useState, useRef } from "react";
 import SwipeHint from "./subComponents/SwipeHint.tsx";
 import PrevArrow from "./subComponents/PrevArrow.tsx";
