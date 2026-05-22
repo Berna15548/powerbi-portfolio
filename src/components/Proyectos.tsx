@@ -8,6 +8,10 @@ import { useEffect, useState, useRef } from "react";
 import SwipeHint from "./subComponents/SwipeHint.tsx";
 import PrevArrow from "./subComponents/PrevArrow.tsx";
 import NextArrow from "./subComponents/NextArrow.tsx";
+import {LuChartNoAxesCombined} from "react-icons/lu";
+import {LuWheat} from "react-icons/lu";
+import {ImTree} from "react-icons/im";
+import {PiCoffeeBold} from "react-icons/pi";
 
 const useIsMobile = () => {
     const [isMobile, setIsMobile] = useState(
@@ -54,30 +58,40 @@ const Proyectos = () => {
     };
 
     const slidesData = [
+        /*slide 1*/
         {
-            title: "APP Multiplataforma",
-            icon: <CgHomeScreen className="main-icon" />,
-            description: `Trabajo colaborativo en el desarrollo de una app de generación de curriculums personales de forma sensilla, con diseño responsivo para PC y móbiles. Cuenta con su propia base de datos, almacenamiento de imagenes en la nube, varias plantillas seleccionables y descarga en PDF.
+            title: "Gross Profit Performance Analysis",
+            icon: <LuChartNoAxesCombined className="main-icon" />,
+            description: `Comprehensive analysis of Plant Co.’s 2023 gross profit performance, evaluating profitability drivers, revenue variance, and product margins. Developed dynamic models to assess year-over-year growth and track key business performance metrics.
 
-                        -React, Boostrap, MySql, Maven, SpringBoot, HTML5, Typescript, Javascript.`,
-            img: "https://i.ibb.co/DDNtQ4z5/app-Curriculums.webp",
+            -Power BI, DAX, Power Query, Excel.`,
+            img: "https://i.ibb.co/cjp4z4N/portfolio-gross-profit.webp",
+        },
+        /*slide 2*/
+        {
+            title: "Agroclimatic Suitability Assessment",
+            icon: <LuWheat className="main-icon" />,
+            description: `Geospatial and climate data analysis evaluating agricultural suitability across Paraná, Brazil. Modeled temperature, rainfall patterns, and soil data to identify optimal crop zones, mitigate climate risks, and support data-driven land use strategies.
+
+            -Power BI, DAX, Power Query, Excel.`,
+            img: "https://i.ibb.co/nNZ8skmm/Parana-acroclimate-analysis.webp",
+        },
+        /*slide 3*/
+        {
+            title: "E-Commerce Customer RFM Segmentation",
+            icon: <ImTree className="main-icon" />,
+            description: `Advanced customer segmentation utilizing SQL queries to engineer an RFM (Recency, Frequency, Monetary) matrix from transactional data. Optimized complex data extraction to segment active users, calculate customer lifetime value indicators, and uncover purchasing trends.
+
+            -SQL, PostgreSQL, BigQuery, Excel.`,
+            img: "https://i.ibb.co/JFv6yLhC/customers-rfm-score.webp",
         },
         {
-            title: "Sitio Web de Juguetería",
-            icon: <CgScreen className="main-icon" />,
-            description: `Mockup de una página web que sirva como plataforma de ventas para una empresa de juguetería. Cuenta con una base de datos alojada en Firebase de forma gratuita, registro y autentificación de usuarios y panel de administración con autorización por roles asignados desde la DB.
+            title: "Global Coffee Sales Performance Analysis",
+            icon: <PiCoffeeBold  className="main-icon" />,
+            description: `Comprehensive sales performance analysis for a coffee distributor, evaluating revenue streams across multiple countries, bean varieties, and seasonal timelines. Built interactive dashboards to track geographic trends, product mix optimization, and key commercial growth metrics.
 
-                        -Angular, Firebase, Scss, Angular Material, Typescript, HTML5.`,
-            img: "https://i.ibb.co/wr7MzFQF/jugueteria.webp",
-        },
-        {
-            title: "Librería Online",
-            icon: <CgScreen className="main-icon" />,
-            description: `Sencilla web para una librería imaginaria con base de datos generada de forma local con MySql. El backend posee un crud completo y funcional. El frontend permite filtrar libros mediante todos sus atributos e incluye un panel de administración para gestionar la base de datos.
-                            Incluye una hoja de productos para poblar la DB desde el panel de administración.
-                            
-                            -React, MySql, Boostrap, HTML5, Typescript, Maven, SpringBoot.`,
-            img: "https://i.ibb.co/QFZ4jB36/libreria.webp",
+            -Excel, Power Query, Pivot Tables, Data Modeling.`,
+            img: "https://i.ibb.co/XxYwJ8tK/excel-coffee-sales.webp",
         },
     ];
 
