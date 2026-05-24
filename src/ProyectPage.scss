@@ -5,6 +5,7 @@
   padding-bottom: 30px;
   margin-top: 15vh;
   background-color: rgba(0, 0, 0, 0.10);
+  backdrop-filter: blur(5px);
 
   /* Como los tres usan exactamente el mismo estilo de h3, lo metemos acá adentro también */
   h3 {
@@ -116,5 +117,209 @@
   p {
     text-align: left;
     padding: 0 30px;
+  }
+}
+
+/* Estilo Único e Independiente para la sección de Hallazgos (Alineado a la Izquierda) */
+#Findings {
+  width: 100% !important;
+  max-width: 800px !important; /* Forzamos tope real para que reaccione al tamaño */
+  margin: 12vh auto 0 auto !important;
+  padding: 40px;
+  box-sizing: border-box;
+  text-align: left;
+
+  /* Título de la sección principal */
+  h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 20px rgba(174, 106, 246, 0.3);
+    text-align: left;
+  }
+
+  /* Introducción corta debajo del título */
+  .findings-intro {
+    font-size: 1.15rem;
+    color: #a0aec0;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 100%;
+    text-align: left;
+  }
+}
+
+/* Tarjeta contenedora de cada insight específico */
+.insight-container {
+  background: rgba(15, 15, 25, 0.65);
+  border-left: 4px solid #ae6af6; /* Línea de acento lateral */
+  border-radius: 4px 16px 16px 4px;
+  padding: 30px;
+  box-sizing: border-box;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(152, 194, 252, 0.1);
+  }
+
+  /* Subtítulo del insight */
+  h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #98c2fc;
+    margin-top: 0;
+    margin-bottom: 14px;
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  /* Descripción del insight */
+  p {
+    font-size: 1.05rem;
+    color: #e2e8f0;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    text-align: left;
+  }
+
+  /* El contenedor de la imagen que abre el modal */
+  .img-container {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    margin: 0; /* Pegado a la izquierda */
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid rgba(152, 194, 252, 0.2);
+    background: #0b0b12;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Efecto hover elegante con desenfoque */
+    .zoom-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 11, 18, 0.4);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+
+      span {
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+        background: rgba(174, 106, 246, 0.8);
+        padding: 10px 20px;
+        border-radius: 30px;
+        box-shadow: 0 4px 15px rgba(174, 106, 246, 0.4);
+      }
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.02);
+      }
+      .zoom-overlay {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+/* Modal Fullscreen */
+.image-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(5, 5, 10, 0.92);
+  backdrop-filter: blur(12px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+
+  .modal-content {
+    position: relative;
+    max-width: 85%;
+    max-height: 85vh;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    img {
+      width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .close-modal-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(15, 15, 25, 0.8);
+      color: #fff;
+      font-size: 1.75rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 40%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+
+      &:hover {
+        background: #7c7272;
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+  #Findings {
+    width: 95% !important;
+    padding: 20px;
+
+    h3 {
+      font-size: 1.85rem;
+    }
+
+    .findings-intro {
+      margin-bottom: 25px;
+    }
+  }
+
+  .insight-container {
+    padding: 20px;
+
+    h4 {
+      font-size: 1.15rem;
+    }
   }
 }
