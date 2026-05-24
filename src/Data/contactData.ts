@@ -16,7 +16,7 @@ export const useClipboard = () => {
 };
 
 export const contactos = {
-    whatsapp: "+54 9 11 2751-1917",
+    whatsapp: "9999999999",
     email: "wernertraveleraus@gmail.com",
     github: "https://github.com/Berna15548?tab=repositories"
 };

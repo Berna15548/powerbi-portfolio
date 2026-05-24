@@ -1,5 +1,4 @@
 import './App.scss';
-import SobreMi from "./components/SobreMi.tsx";
 import NavBar from "./components/NavBar.tsx";
 import Inicio from "./components/Inicio.tsx";
 import Proyectos from "./components/Proyectos.tsx";
@@ -87,7 +86,6 @@ function App() {
                     {/*<NavBar />
                     <Inicio />
                     <Proyectos />
-                    <SobreMi />
                     <Contacto />*/}
                     <ProyectPage></ProyectPage>
 

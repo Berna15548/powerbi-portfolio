@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const Skills = () => {
+    
     const [activeBadge, setActiveBadge] = useState(null);
 
     const handleBadgeClick = (label) => {
