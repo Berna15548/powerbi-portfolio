@@ -1,3 +1,8 @@
+
+p, h1, h2, h3, h4, h5, h6 {
+  cursor: default;
+}
+
 /* 1. Definimos la estructura unificada */
 %panel-base {
   border-block: 2px solid rgba(255, 255, 255, 0.6);
@@ -123,15 +128,16 @@
 /* Estilo Único e Independiente para la sección de Hallazgos (Alineado a la Izquierda) */
 #Findings {
   width: 100% !important;
-  max-width: 800px !important; /* Forzamos tope real para que reaccione al tamaño */
+  max-width: 80vw !important; /* Forzamos tope real para que reaccione al tamaño */
   margin: 12vh auto 0 auto !important;
+  backdrop-filter: blur(4px);
   padding: 40px;
   box-sizing: border-box;
   text-align: left;
 
   /* Título de la sección principal */
   h3 {
-    font-family: 'Orbitron', sans-serif;
+    font-family: "Segoe UI Historic";
     font-size: 2.5rem;
     color: #ffffff;
     margin-bottom: 10px;
@@ -143,7 +149,7 @@
   /* Introducción corta debajo del título */
   .findings-intro {
     font-size: 1.15rem;
-    color: #a0aec0;
+    color: #eeeeee;
     line-height: 1.6;
     margin-bottom: 40px;
     max-width: 100%;
@@ -160,11 +166,6 @@
   box-sizing: border-box;
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(152, 194, 252, 0.1);
-  }
 
   /* Subtítulo del insight */
   h4 {
@@ -308,6 +309,7 @@
 
     h3 {
       font-size: 1.85rem;
+      font-family: sans-serif;
     }
 
     .findings-intro {
@@ -322,4 +324,79 @@
       font-size: 1.15rem;
     }
   }
+}
+
+/* ====================== EXPLICIT ANALYSIS ====================== */
+.explicit-analysis {
+  padding: 0 25px;
+  border-left: 4px solid #b6d4fd;
+  border-right: 4px solid #b6d4fd;
+  border-radius: 8px;
+  margin-top: 80px !important;     /* Espacio arriba */
+  margin-bottom: 80px !important;  /* Espacio abajo */
+
+  h4 {
+
+    color: #98c2fc;
+    margin-bottom: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #e2e8f0;
+    text-align: justify;
+  }
+}
+
+/* ====================== SUGGESTED STRATEGIES ====================== */
+.suggested-strategies {
+  margin-top: 40px;
+
+  h4 {
+    font-size: 1.45rem;
+    color: #ffffff;
+    margin-bottom: 22px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+}
+
+/* Tarjetas de estrategias */
+.suggestion-card {
+  background: rgba(15, 15, 30, 0.75);
+  border: 1px solid rgba(174, 106, 246, 0.2);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+
+  h5 {
+    font-size: 1.2rem;
+    color: #98c2fc;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 1.02rem;
+    line-height: 1.65;
+    color: #cbd5e1;
+    margin: 0;
+  }
+}
+
+/* Espaciado final dentro del insight-container */
+.insight-container {
+  .explicit-analysis,
+  .suggested-strategies {
+    margin-top: 35px;
+  }
+}
+
+.insight-container .img-footer p {
+  margin: 5px 0 !important;
+  font-style: oblique;
 }

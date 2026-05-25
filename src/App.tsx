@@ -1,8 +1,4 @@
 import './App.scss';
-import NavBar from "./components/NavBar.tsx";
-import Inicio from "./components/Inicio.tsx";
-import Proyectos from "./components/Proyectos.tsx";
-import Contacto from "./components/Contacto.tsx";
 import ParticlesComponent from "./components/Canvas/ParticlesComponent.tsx";
 import { useState, useEffect } from "react";
 import { CssLoader } from "./components/Canvas/CssLoader.tsx";
