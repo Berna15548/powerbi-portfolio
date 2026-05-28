@@ -18,7 +18,7 @@ const Contacto = () => {
                     Todos los derechos reservados.
                 </div>
 
-                <span id="muchas-gracias">Espero que le haya sido de agrado y podamos comunicarnos pronto.</span>
+                <span id="muchas-gracias">Glad to have you here. Let’s stay in touch!</span>
                 
                 <Stack>
                     {/*===============================================================*/}
