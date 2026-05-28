@@ -5,7 +5,12 @@ import { CssLoader } from "./components/Canvas/CssLoader.tsx";
 import ParticlesInitializer from "./components/Canvas/ParticlesInitializer.tsx";
 import BackgroundMusic from "./components/Canvas/music/BackgroundMusic.tsx";
 import {MusicProvider} from "./components/Canvas/music/MusicProvider.tsx";
-import ProyectPage from "./components/ProyectPage.tsx";
+import ProyectPage1 from "./components/ProyectPage1.tsx";
+import NavBar from "./components/NavBar.tsx";
+import Inicio from "./components/Inicio.tsx";
+import Proyectos from "./components/Proyectos.tsx";
+import Contacto from "./components/Contacto.tsx";
+import { Routes, Route } from "react-router-dom";
 
 
 function App() {
@@ -78,12 +83,22 @@ function App() {
             <div style={{backgroundColor: "rgb(18 18 97"}}>
                 <ParticlesInitializer />
                 <ParticlesComponent id="particles-global" />
+                
                 <div id="app-container">
-                    {/*<NavBar />
-                    <Inicio />
-                    <Proyectos />
-                    <Contacto />*/}
-                    <ProyectPage></ProyectPage>
+                    <Routes>
+                        {/*HOME PAGE*/}
+                        <Route path="/" element={
+                            <>
+                                <NavBar />
+                                <Inicio />
+                                <Proyectos />
+                                <Contacto />
+                            </>
+                        } />
+                        {/*ROUTER PAGE (PROYECTS)*/}
+                        <Route path="/proyect-page-1" element={<ProyectPage1 />} />
+                    </Routes>
+
 
                 </div>
             </div>

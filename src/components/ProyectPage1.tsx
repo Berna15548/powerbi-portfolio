@@ -1,45 +1,48 @@
 import '../App.scss';
-import '../ProyectPage.scss'
-import {SiReact} from "react-icons/si";
-import {SiAngular} from "react-icons/si";
-import {SiFigma} from "react-icons/si";
-import {SiJavascript} from "react-icons/si";
-import {SiTypescript} from "react-icons/si";
-import {SiCss3} from "react-icons/si";
-import {SiSass} from "react-icons/si";
-import {SiBootstrap} from "react-icons/si";
-import {SiMantine} from "react-icons/si";
-import {SiMaterialdesign} from "react-icons/si";
-import {motion, AnimatePresence} from "framer-motion";
+import '../ProyectPage.scss';
+
+import { SiReact } from "react-icons/si";
+import { SiAngular } from "react-icons/si";
+import { SiFigma } from "react-icons/si";
+import { SiJavascript } from "react-icons/si";
+import { SiTypescript } from "react-icons/si";
+import { SiCss3 } from "react-icons/si";
+import { SiSass } from "react-icons/si";
+import { SiBootstrap } from "react-icons/si";
+import { SiMantine } from "react-icons/si";
+import { SiMaterialdesign } from "react-icons/si";
+
+import { motion, AnimatePresence } from "framer-motion";
 import SkillBadge from "./subComponents/SkillBadge.tsx";
-import {useState} from "react";
-import {useEffect} from "react";
 
-const ProyectPage = () => {
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-    const [activeBadge, setActiveBadge] = useState(null);
+const ProyectPage1 = () => {
+    const navigate = useNavigate();
 
+    const [activeBadge, setActiveBadge] = useState<string | null>(null);
     const [modalImg, setModalImg] = useState<string | null>(null);
 
-    const handleBadgeClick = (label) => {
-        setActiveBadge(prevActiveBadge =>
-            prevActiveBadge === label ? null : label
-        );
-    };
+    // Scroll al top al entrar
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }, []);
 
+    // Auto cerrar badge en móvil
     useEffect(() => {
         const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
         if (isMobile && activeBadge) {
             const timer = setTimeout(() => {
                 setActiveBadge(null);
             }, 2000);
-
             return () => clearTimeout(timer);
         }
-
-        return () => {};
     }, [activeBadge]);
+
+    const handleBadgeClick = (label: string) => {
+        setActiveBadge(prev => prev === label ? null : label);
+    };
 
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
@@ -56,16 +59,15 @@ const ProyectPage = () => {
         { icon: SiMaterialdesign, label: "Materials", link: "https://m3.material.io" },
     ];
 
-
     return (
-        <div
-            id="proyect-page-container">
-            {/*BACK BUTTOM*/}
-            <button>{"<< Back to All Projects"}</button>
+        <div id="proyect-page-container">
+
+            {/* BACK BUTTON */}
+            <button className="back-button" onClick={() => navigate('/')}
+            >{"<< Back to All Projects"}</button>
 
             {/*HEADER*/}
-            <div
-                id='header-panel'>
+            <div id='header-panel'>
                 <h3>Dataset Analysis: Key Findings and Insight</h3>
                 <p>This report summarizes the major findings from the analysis of the Yelp Academic Dataset. The goal was to explore the characteristics of businesses, understand user behavior, and identify key trends that could inform business strategy. The analysis was conducted using SQL queries on a Pos</p>
             </div>
@@ -507,8 +509,13 @@ const ProyectPage = () => {
                     The disparity in performance between product categories and the existence of high-margin, low-volume accounts present clear opportunities for improvement.
                 </p>
             </div>
+
+            {/* BACK BUTTON */}
+            <button className="back-button" onClick={() => navigate('/')}
+            >{"<< Back to All Projects"}</button>
+
         </div>
     );
 };
 
-export default ProyectPage;
+export default ProyectPage1;

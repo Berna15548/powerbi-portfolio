@@ -443,21 +443,138 @@
 
 //=========   PROYECTOS   ===========
 
-#project-grid {
+#project-grid-system {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Crea exactamente 2 columnas iguales */
-  gap: 20px; /* Espacio entre los elementos */
-  width: 60%;
-  margin: 20vh auto; /* Centra el contenedor en la pantalla */
-  background-color: rgba(255, 0, 0, 0.41);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 60px auto;
+  box-sizing: border-box;
 
-  /* Responsivo: En celulares pasa automáticamente a 1 sola columna */
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    width: 90%;
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+    padding-inline: 15px;
   }
 }
 
+.custom-project-card {
+  position: relative;
+  background: rgba(20, 20, 30, 0.45);
+  border-radius: 12px;
+  padding: 35px;
+  box-sizing: border-box;
+  overflow: hidden; // Crucial para que el icono de fondo no se desborde de las esquinas
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  min-height: 220px; // Altura mínima para garantizar espacio del contenido e icono
+
+  // Borde base interactivo
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  transition: border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+  box-shadow 0.4s ease,
+  transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+
+  // Borde degradado en hover
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    padding: 2px;
+    background: linear-gradient(135deg, #ae6af6 0%, #98c2fc 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  // Comportamiento Hover de la tarjeta
+  &:hover {
+    transform: translateY(-4px);
+    border-color: transparent;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(174, 106, 246, 0.25);
+
+    &::before {
+      opacity: 1;
+    }
+
+    // El icono de fondo reacciona sutilmente al hover aumentando presencia
+    .card-background-icon {
+      opacity: 0.9;
+      transform: scale(1.08);
+      color: #98c2fc;
+    }
+
+    .card-project-title {
+      color: #ffffff;
+      text-shadow: 0 0 15px rgba(152, 194, 252, 0.6);
+    }
+  }
+
+  // Contenedor del Icono de Fondo (Marca de agua)
+  .card-background-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    opacity: 0.2;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; // Evita interferir con clicks o selecciones de texto
+    z-index: 1;
+    transition: transform 0.4s ease, opacity 0.4s ease, color 0.4s ease;
+
+    // Control estricto sobre elementos vectoriales o imágenes internas para evitar deformación
+    svg, img, i {
+      width: 100%;
+      height: 100%;
+      max-width: 100px;
+      max-height: 100px;
+      object-fit: contain; // Mantiene la proporción original pase lo que pase
+      display: block;
+    }
+  }
+
+  // Contenido de texto posicionado arriba de la marca de agua
+  .card-content {
+    position: relative;
+    z-index: 3;
+    pointer-events: none; // Permite que el cursor traspase al hacer hover general
+  }
+
+  .card-project-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #98c2fc;
+    margin: 0 0 14px 0;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+  }
+
+  .card-project-description {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: #cbd5e1;
+    margin: 0;
+    padding-right: 40px; // Deja espacio libre a la derecha para que el texto no tape completamente al icono
+  }
+}
+
+/*=============================================*/
 #proyectos-container {
   padding-top: 90px;
   margin: 0 auto;
