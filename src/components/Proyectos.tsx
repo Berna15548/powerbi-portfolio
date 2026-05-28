@@ -84,26 +84,38 @@ const Proyectos = () => {
         {
             title: "Gross Profit Performance Analysis",
             icon: LuChartNoAxesCombined,
-            description: `Comprehensive analysis of Plant Co.’s 2023 gross profit performance, evaluating profitability drivers, revenue variance, and product margins. Developed dynamic models to assess year-over-year growth and track key business performance metrics. -Power BI, DAX, Power Query, Excel.`,
+            description: `Comprehensive analysis of 2023 gross profit performance, evaluating profitability drivers, revenue variance, and dynamic models to track key business metrics.`,
             img: "https://i.ibb.co/cjp4z4N/portfolio-gross-profit.webp",
+            slidetext: `Comprehensive analysis of Plant Co.’s 2023 gross profit performance, evaluating profitability drivers, revenue variance, and product margins. Developed dynamic models to assess year-over-year growth and track key business performance metrics. 
+        
+        -Power BI, DAX, Power Query, Excel.`,
         },
         {
             title: "Agroclimatic Suitability Assessment",
             icon: LuWheat,
-            description: `Geospatial and climate data analysis evaluating agricultural suitability across Paraná, Brazil...`,
+            description: `Geospatial and climate data analysis evaluating agricultural suitability to identify optimal crop zones and mitigate environmental risks.`,
             img: "https://i.ibb.co/nNZ8skmm/Parana-acroclimate-analysis.webp",
+            slidetext: `Geospatial and climate data analysis evaluating agricultural suitability across Paraná, Brazil. Modeled temperature, rainfall patterns, and soil data to identify optimal crop zones, mitigate climate risks, and support data-driven land use strategies.
+        
+        -Power BI, DAX, Power Query, Excel.`,
         },
         {
             title: "E-Commerce Customer RFM Segmentation",
             icon: ImTree,
-            description: `Advanced customer segmentation utilizing SQL queries...`,
+            description: `Advanced customer segmentation engineering an RFM matrix from transactional data to identify active user trends and lifetime value indicators.`,
             img: "https://i.ibb.co/JFv6yLhC/customers-rfm-score.webp",
+            slidetext: `Advanced customer segmentation utilizing SQL queries to engineer an RFM (Recency, Frequency, Monetary) matrix from transactional data. Optimized complex data extraction to segment active users, calculate customer lifetime value indicators, and uncover purchasing trends.
+
+        -SQL, PostgreSQL, BigQuery, Excel.`,
         },
         {
             title: "Global Coffee Sales Performance Analysis",
             icon: PiCoffeeBold,
-            description: `Comprehensive sales performance analysis for a coffee distributor...`,
+            description: `Comprehensive sales analysis evaluating revenue streams, geographic trends, and product mix optimization across multiple countries.`,
             img: "https://i.ibb.co/XxYwJ8tK/excel-coffee-sales.webp",
+            slidetext: `Comprehensive sales performance analysis for a coffee distributor, evaluating revenue streams across multiple countries, bean varieties, and seasonal timelines. Built interactive dashboards to track geographic trends, product mix optimization, and key commercial growth metrics.
+
+        -Excel, Power Query, Pivot Tables, Data Modeling.`,
         },
     ];
 
@@ -130,7 +142,7 @@ const Proyectos = () => {
                                         <SwipeHint />
                                     </div>
                                 </div>
-                                <Text>{slide.description}</Text>
+                                <Text>{slide.slidetext}</Text>
                             </Card>
                             <img src={slide.img} width="100%" alt={slide.title} />
                         </div>

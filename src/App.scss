@@ -470,7 +470,7 @@
   flex-direction: column;
   justify-content: space-between;
   text-align: left;
-  min-height: 250px; // Altura mínima para garantizar espacio del contenido e icono
+  min-height: 230px; // Altura mínima para garantizar espacio del contenido e icono
 
   // Borde base interactivo
   border: 3px outset rgba(255, 255, 255, 0.43);
@@ -570,7 +570,8 @@
     line-height: 1.65;
     color: #cbd5e1;
     margin: 0;
-    padding-right: 40px; // Deja espacio libre a la derecha para que el texto no tape completamente al icono
+    padding-right: 60px; // Deja espacio libre a la derecha para que el texto no tape completamente al icono
+    white-space: pre-line;
   }
 }
 
