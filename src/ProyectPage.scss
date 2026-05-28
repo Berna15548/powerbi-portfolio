@@ -1,4 +1,3 @@
-
 p, h1, h2, h3, h4, h5, h6 {
   cursor: default;
 }
@@ -70,7 +69,6 @@ p, h1, h2, h3, h4, h5, h6 {
   height: 100%;
   width: 100%;
   overflow-x: visible !important;
-  padding: 0 50px;
 }
 
 #index-panel {
@@ -126,7 +124,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 /* Estilo Único e Independiente para la sección de Hallazgos (Alineado a la Izquierda) */
-#Findings {
+.findings {
   width: 100% !important;
   max-width: 80vw !important; /* Forzamos tope real para que reaccione al tamaño */
   margin: 12vh auto 0 auto !important;
@@ -188,60 +186,110 @@ p, h1, h2, h3, h4, h5, h6 {
     text-align: left;
   }
 
-  /* El contenedor de la imagen que abre el modal */
-  .img-container {
-    position: relative;
+  /* =================================================================
+     NUEVA GALERÍA ADAPTATIVA - ESTRICTA FIJA A MÁXIMO 2 COLUMNAS
+     ================================================================= */
+  .images-gallery {
+    display: grid;
+    gap: 20px;
     width: 100%;
-    max-width: 650px;
-    margin: 0; /* Pegado a la izquierda */
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: pointer;
-    border: 1px solid rgba(152, 194, 252, 0.2);
-    background: #0b0b12;
+    margin-block: 25px 35px;
 
-    img {
+    /* FUERZA SIEMPRE PAR DE 2 COLUMNAS POR FILA (Para 4 o más imágenes) */
+    grid-template-columns: repeat(2, 1fr);
+
+    .img-container {
+      position: relative;
       width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+      margin: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid rgba(152, 194, 252, 0.2);
+      background: #0b0b12;
 
-    /* Efecto hover elegante con desenfoque */
-    .zoom-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(11, 11, 18, 0.4);
-      backdrop-filter: blur(4px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-
-      span {
-        color: #ffffff;
-        font-weight: 500;
-        font-size: 0.95rem;
-        letter-spacing: 0.5px;
-        background: rgba(174, 106, 246, 0.8);
-        padding: 10px 20px;
-        border-radius: 30px;
-        box-shadow: 0 4px 15px rgba(174, 106, 246, 0.4);
-      }
-    }
-
-    &:hover {
       img {
-        transform: scale(1.02);
+        width: 100%;
+        height: calc(100% - 45px);
+        display: block;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
+
+      /* Efecto hover elegante con desenfoque */
       .zoom-overlay {
-        opacity: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+
+        span {
+          color: #ffffff;
+          font-weight: 500;
+          font-size: 0.95rem;
+          letter-spacing: 0.5px;
+          background: rgba(71, 70, 100, 0.8);
+          padding: 10px 20px;
+          border-radius: 30px;
+          box-shadow: 0 4px 15px rgba(55, 35, 75, 0.4);
+        }
+      }
+
+      &:hover {
+        img {
+          transform: scale(1.02);
+        }
+        .zoom-overlay {
+          opacity: 1;
+        }
       }
     }
+
+    /* CASO 1 IMAGEN: Centrada a la izquierda con el tamaño original de 650px */
+    &:has(> .img-container:first-child:nth-last-child(1)) {
+      grid-template-columns: 1fr;
+      .img-container {
+        max-width: 650px;
+      }
+    }
+
+    /* CASO 2 IMÁGENES: Usa las 2 columnas por defecto, queda emparejado automáticamente */
+
+    /* CASO 3 IMÁGENES: 2 arriba y la tercera sola abajo centrada horizontalmente */
+    &:has(> .img-container:first-child:nth-last-child(3)) {
+      .img-container:nth-child(3) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        max-width: calc(50% - 10px); /* Evita que se estire y conserve la proporción */
+      }
+    }
+
+    /* OTROS CASOS IMPARES SUPERIORES (Ej: 5 o 7 imágenes) */
+    /* Captura al último elemento si queda suelto (impar) y lo centra sin romper medidas */
+    & > .img-container:last-child:nth-child(odd):not(:nth-child(1)) {
+      grid-column: 1 / -1;
+      justify-self: center;
+      max-width: calc(50% - 10px);
+    }
+  }
+}
+
+.img-footer {
+  padding: 12px 14px;
+  text-align: center;
+  background: rgba(10, 10, 20, 0.9);
+
+  p {
+    margin: 0 !important;
+    font-size: 0.92rem;
+    font-style: oblique;
+    color: #d8e1f0;
+    line-height: 1.4;
   }
 }
 
@@ -303,7 +351,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 /* Responsivo para móviles */
 @media (max-width: 768px) {
-  #Findings {
+  .findings {
     width: 95% !important;
     padding: 20px;
 
@@ -323,6 +371,16 @@ p, h1, h2, h3, h4, h5, h6 {
     h4 {
       font-size: 1.15rem;
     }
+
+    /* Colapsar galería obligatoriamente a una columna solo en móviles */
+    .images-gallery {
+      grid-template-columns: 1fr !important;
+
+      .img-container {
+        max-width: 100% !important;
+        grid-column: auto !important;
+      }
+    }
   }
 }
 
@@ -336,8 +394,7 @@ p, h1, h2, h3, h4, h5, h6 {
   margin-bottom: 80px !important;  /* Espacio abajo */
 
   h4 {
-
-    color: #98c2fc;
+    color: #b6d4fd;
     margin-bottom: 18px;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -345,6 +402,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
   p {
     font-size: 1.05rem;
+    font-style: normal;
     line-height: 1.75;
     color: #e2e8f0;
     text-align: justify;
@@ -396,7 +454,37 @@ p, h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.insight-container .img-footer p {
+.insight-container {
   margin: 5px 0 !important;
   font-style: oblique;
 }
+
+.limitations-container{
+  @extend .findings;
+
+  background: rgba(5, 5, 10, 0.84);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+
+  box-shadow:
+          0 0 12px rgba(0, 0, 0, 0.84),
+          0 0 25px rgba(38, 10, 10, 0.53);
+
+  h3{
+    margin-top: 0;
+    margin-bottom: 40px;
+  }
+
+  h4{
+    font-size: 1.3rem;
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
+
+  p{
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+}
+

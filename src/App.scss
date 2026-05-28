@@ -137,8 +137,8 @@
     border-radius: 12px;
     backdrop-filter: blur(3px);
     background-color: rgba(0, 0, 0, 0.30);
-    color: white!important;
-    padding: 0 !important;
+    color: white !important;
+    padding: 0!important;
     cursor: pointer;
 
     svg, i {
@@ -151,7 +151,7 @@
       flex-direction: row;
       gap: 10px;
       align-items: center;
-      width: 45px;
+      width: 35px;
       margin-left: 10px;
       white-space: nowrap;
       transition: opacity 0.3s ease, width 0.5s ease;
@@ -161,10 +161,11 @@
     &:hover {
       width: 300px;
 
-      span{
-        width: 200px!important;
+      span {
+        width: 200px !important;
         transition: width 0.5s ease;
         font-size: larger;
+        padding: 0 0 0 20px!important;
       }
     }
   }
